@@ -1,30 +1,38 @@
-package com.read.alarmclock;
+package com.read.alarmclock.Activities;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.TextClock;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.read.alarmclock.R;
+import com.read.alarmclock.Utils.ScreenSaverTimer;
+
 public class ClockActivity extends AppCompatActivity {
 
-    String TIME_PATTERN = "h:mm a";
-    String TIME_PATTERN_WITH_SECONDS = "h:mm:ss a";
-    String DATE_PATTERN = "E, MMM d, yyyy";
+    private String TIME_PATTERN = "h:mm a";
+    private String TIME_PATTERN_WITH_SECONDS = "h:mm:ss a";
+    private String DATE_PATTERN = "E, MMM d, yyyy";
+    private ScreenSaverTimer screenSaverTimer;
 
     /**
-     * When this activity is created, inflate the layout in {@link R.layout#activity_clock}.
+     * When this activity is created, inflate the layout in {@link R.layout#activity_clock}. Also,
+     * initialize the ScreenSaverTimer object.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock);
+        screenSaverTimer = new ScreenSaverTimer(this, 60000);
     }
 
     /**
-     * When this activity is resumed, set the format of each text clock.
+     * When this activity is resumed, set the format of each text clock and start the screen saver
+     * timer.
      */
     @Override
     protected void onResume() {
@@ -37,6 +45,27 @@ public class ClockActivity extends AppCompatActivity {
         // Set the format of the date text clock.
         TextClock textClockDate = findViewById(R.id.clock_date);
         textClockDate.setFormat12Hour(DATE_PATTERN);
+
+        // Start the screen saver timer.
+        screenSaverTimer.startTimer();
+    }
+
+    /**
+     * When this activity is paused, stop the screen saver timer.
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        screenSaverTimer.stopTimer();
+    }
+
+    /**
+     * When any touch event is detected, restart the screen saver timer.
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent motionEvent) {
+        screenSaverTimer.resetTimer();
+        return false;
     }
 
     /**
@@ -67,5 +96,4 @@ public class ClockActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(menuItem);
         }
     }
-
 }

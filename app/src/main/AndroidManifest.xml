@@ -10,12 +10,20 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ClockActivity"
+            android:name=".Activities.ClockActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Activities.ScreenSaverActivity"
+            android:parentActivityName=".Activities.ClockActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ClockActivity" />
         </activity>
 
     </application>
