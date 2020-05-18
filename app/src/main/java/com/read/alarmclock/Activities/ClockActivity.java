@@ -39,11 +39,11 @@ public class ClockActivity extends AppCompatActivity {
         super.onResume();
 
         // Set the format of the time text clock.
-        TextClock textClockTime = findViewById(R.id.clock_time);
+        TextClock textClockTime = findViewById(R.id.text_clock_time);
         textClockTime.setFormat12Hour(TIME_PATTERN);
 
         // Set the format of the date text clock.
-        TextClock textClockDate = findViewById(R.id.clock_date);
+        TextClock textClockDate = findViewById(R.id.text_clock_date);
         textClockDate.setFormat12Hour(DATE_PATTERN);
 
         // Start the screen saver timer.

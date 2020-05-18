@@ -6,13 +6,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- TextView styles. -->
-    <style name="TextView.Clock.Time" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">120sp</item>
-    </style>
-
-    <style name="TextView.Clock.Date" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">60sp</item>
-    </style>
-
 </resources>

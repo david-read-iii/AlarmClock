@@ -7,15 +7,15 @@
     android:orientation="vertical">
 
     <TextClock
-        android:id="@+id/clock_time"
-        style="@style/TextView.Clock.Time"
+        android:id="@+id/text_clock_time"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_text_clock_time" />
 
     <TextClock
-        android:id="@+id/clock_date"
-        style="@style/TextView.Clock.Date"
+        android:id="@+id/text_clock_date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_text_clock_date" />
 
 </LinearLayout>
