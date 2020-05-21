@@ -21,22 +21,15 @@ public class ClockActivity extends AppCompatActivity {
 
     /**
      * When this activity is created, inflate the layout in {@link R.layout#activity_clock}. Also,
-     * initialize the ScreenSaverTimer object.
+     * initialize the ScreenSaverTimer object and set the format of each text clock.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock);
-        screenSaverTimer = new ScreenSaverTimer(this, 60000);
-    }
 
-    /**
-     * When this activity is resumed, set the format of each text clock and start the screen saver
-     * timer.
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
+        // Initialize this object to set a timer to start the screen saver.
+        screenSaverTimer = new ScreenSaverTimer(this, 60000);
 
         // Set the format of the time text clock.
         TextClock textClockTime = findViewById(R.id.text_clock_time);
@@ -45,6 +38,14 @@ public class ClockActivity extends AppCompatActivity {
         // Set the format of the date text clock.
         TextClock textClockDate = findViewById(R.id.text_clock_date);
         textClockDate.setFormat12Hour(DATE_PATTERN);
+    }
+
+    /**
+     * When this activity is resumed, start the screen saver timer.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         // Start the screen saver timer.
         screenSaverTimer.startTimer();
