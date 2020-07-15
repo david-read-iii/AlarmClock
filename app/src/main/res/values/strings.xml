@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">AlarmClock</string>
+    <string name="app_name">Project Sundial</string>
+
+    <string name="activity_name_clock">Clock</string>
+    <string name="activity_name_alarms_list">Alarms</string>
+
+    <string name="button_delete">Delete</string>
 </resources>

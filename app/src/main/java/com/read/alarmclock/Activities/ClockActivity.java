@@ -1,5 +1,6 @@
 package com.read.alarmclock.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,8 +29,13 @@ public class ClockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock);
 
+        // Set the title of this activity in the toolbar.
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(R.string.activity_name_clock);
+
+        // TODO: Uncomment this code when working on the screen saver.
         // Initialize this object to set a timer to start the screen saver.
-        screenSaverTimer = new ScreenSaverTimer(this, 60000);
+        // screenSaverTimer = new ScreenSaverTimer(this, 60000);
 
         // Set the format of the time text clock.
         TextClock textClockTime = findViewById(R.id.text_clock_time);
@@ -48,7 +54,8 @@ public class ClockActivity extends AppCompatActivity {
         super.onResume();
 
         // Start the screen saver timer.
-        screenSaverTimer.startTimer();
+        if(screenSaverTimer != null)
+            screenSaverTimer.startTimer();
     }
 
     /**
@@ -57,7 +64,8 @@ public class ClockActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        screenSaverTimer.stopTimer();
+        if(screenSaverTimer != null)
+            screenSaverTimer.stopTimer();
     }
 
     /**
@@ -65,7 +73,8 @@ public class ClockActivity extends AppCompatActivity {
      */
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
-        screenSaverTimer.resetTimer();
+        if(screenSaverTimer != null)
+            screenSaverTimer.resetTimer();
         return false;
     }
 
@@ -86,8 +95,8 @@ public class ClockActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.action_alarms:
-                // TODO: Remove toast and start the AlarmActivity.
-                Toast.makeText(this, "Start AlarmActivity", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, AlarmsListActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.action_settings:
                 // TODO: Remove toast and start the SettingsActivity.

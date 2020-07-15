@@ -20,6 +20,16 @@
 
         <activity
             android:name=".Activities.ScreenSaverActivity"
+            android:label="@string/activity_name_clock"
+            android:parentActivityName=".Activities.ClockActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ClockActivity" />
+        </activity>
+
+        <activity
+            android:name=".Activities.AlarmsListActivity"
+            android:label="@string/activity_name_alarms_list"
             android:parentActivityName=".Activities.ClockActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
